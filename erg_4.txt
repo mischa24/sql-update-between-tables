@@ -1,0 +1,138 @@
+ΣΧΕΤΙΚΑ ΜΕ ΤΗΝ ΥΛΟΠΟΙΗΣΗ ΤΙΣ ΕΡΓΑΣΙΑΣ_4 ΠΡΟΣΠΑΘΗΣΑ ΝΑ ΑΥΤΟΣΕΔΙΑΣΩ ΜΕ ΠΕΡΙΣΣΟΤΕΡΕΣ ΒΑΣΕΙΣ ΚΑΙ ΠΙΝΑΚΕΣ.
+ΟΥΣΙΑΣΤΙΚΑ ΕΧΩ ΜΕΤΟΝΟΜΑΣΕΙ ΤΟ 1/3 ΑΠΟ ΤΑ ΠΑΡΑΔΕΙΓΜΑΤΑ ΤΗΣ ΕΝΟΤΗΤΑΣ ΚΑΙ ΕΓΡΑΨΑ-ΥΛΟΠΟΙΗΣΑ ΜΕ ΤΑ ΑΝΤΙΣΤΟΙΣΑ PrtScn
+ΕΠΙΣΥΝΑΠΤΩ ΚΑΙ ΤΟ WORD
+
+p.s.: ΝΑ ΑΝΑΦΕΡΩ ΜΟΝΑΧΑ ΟΤΙ ΑΠΟ ΤΗΝ ΑΡΧΗ ΤΗΣ ΕΝΟΤΗΤΑΣ ΔΕΝ ΕΧΩ ΛΑΒΕΙ ΚΑΠΟΙΑ ΔΙΟΡΘΩΣΗ-ΣΧΟΛΙΟ
+      ΘΑ ΗΘΕΛΑ ΤΙΣ ΕΝΤΥΠΩΣΕΙΣ ΣΑΣ
+
+ΕΥΧΑΡΙΣΤΩ
+
+
+CREATE DATABASE last_project;
+
+use last_project;
+CREATE TABLE students (
+    student_id MEDIUMINT NOT NULL,
+    first_name VARCHAR(40) NOT NULL,
+    last_name VARCHAR(40) NOT NULL,
+    age TINYINT UNSIGNED,
+    PRIMARY KEY(student_id)
+    );
+	
+use last_project;
+INSERT INTO students VALUES ("1","Dimitris","Dimitriou",28);
+INSERT INTO students VALUES ("2","Maria","Dimitriou",29);
+INSERT INTO students VALUES ("3","Paraskevas","Konstantinidis",58);
+INSERT INTO students VALUES ("4","Sofia","Gramatopoulou",35);
+INSERT INTO students VALUES ("5","Geo","Giannopoulos",28);
+INSERT INTO students VALUES ("6","Kostas","Georgopoulos",23);
+
+
+use last_project;
+CREATE TABLE TRYING (
+student_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+first_name VARCHAR(40) NOT NULL,
+last_name MEDIUMINT NOT NULL,
+ PRIMARY KEY(student_id)
+);
+
+use last_project;
+INSERT INTO trying VALUES (NULL,"AAA-2143",14);
+INSERT INTO trying VALUES (NULL,"ACB-2118",1);
+INSERT INTO trying VALUES (NULL,"ABC-2118",2);
+INSERT INTO trying VALUES (NULL,"ABC-2119",1);
+INSERT INTO trying VALUES (NULL,"WWW-2122",3);
+INSERT INTO trying values (NULL,"BBC-2143",4);
+INSERT INTO trying VALUES (NULL,"CNN-2158",4);
+INSERT INTO trying VALUES (NULL,"ABC-2188",6);
+
+
+use last_project;
+SELECT trying.student_id_id,trying.last_name,trying.first_name,trying.student_id_id,plate
+FROM trying
+INNER JOIN students ON students.student_id=students.student_id
+;
+	
+use insurance2;
+SELECT customer.customer_id ,customer.last_name,customer.first_name, car.car_id, plate
+FROM customer
+LEFT JOIN car ON customer.customer_id = car.customer_id
+UNION 
+SELECT customer.customer_id ,customer.last_name,customer.first_name, car.car_id, plate
+FROM customer
+RIGHT JOIN car ON customer.customer_id = car.customer_id ;
+
+------------------------------------------------------------------------------------------
+CREATE DATABASE e_shop;
+
+USE e_shop;
+CREATE TABLE customer (
+	customer_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+ 	first_name VARCHAR(40) NOT NULL,
+ 	last_name VARCHAR(40) NOT NULL,
+ 	age TINYINT UNSIGNED,
+ 	city VARCHAR(40) NOT NULL,
+ PRIMARY KEY (customer_id)
+);
+
+use e_shop;
+INSERT INTO customer VALUES (NULL,"Dimitris","Dimitriou",28,"Thessaloniki");
+INSERT INTO customer VALUES (NULL,"Dimitris","Dimitriou",30,"Thessaloniki");
+INSERT INTO customer VALUES (NULL,"Maria","Dimitriou",29,"Athens");
+INSERT INTO customer VALUES (NULL,"Maria","Papadopoulou",39,"Pertouli");
+INSERT INTO customer VALUES (NULL,"Paraskevas","Konstantinidis",58,"Athens");
+INSERT INTO customer VALUES (NULL,"Sofia","Gramatopoulou",35,"Volos");
+INSERT INTO customer VALUES (NULL,"Geo","Giannopoulos",28,"Volos");
+INSERT INTO customer VALUES (NULL,"Kostas","Georgopoulos",23,"Pertouli");
+INSERT INTO customer VALUES (NULL,"Georgia","Georgopoulou",23,"Pertouli");
+INSERT INTO customer VALUES (NULL,"John","Georgopoulos",23,"Pilio");
+INSERT INTO customer VALUES (NULL,"Georgia","Papadopoulou",33,"Pertouli");
+INSERT INTO customer VALUES (NULL,"Dimitra","Papadopoulou",31,"Pertouli");
+INSERT INTO customer VALUES (NULL,"Pinelopi","Papadopoulou",48,"Pertouli");
+
+SELECT * FROM e_shop.customer
+ORDER BY last_name, first_name, age DESC;
+
+SELECT last_name, first_name, MAX(age)
+FROM e_shop.customer
+GROUP BY last_name;
+
+SELECT last_name, first_name, MAX(age)
+FROM e_shop.customer
+GROUP BY last_name;
+
+SELECT last_name, COUNT(last_name) FROM e_shop.customer
+GROUP BY last_name
+HAVING COUNT(last_name)	>2;
+
+SELECT * FROM e_shop.customer
+LIMIT 2,7;
+
+---------------------------------------------------------------------------------
+use e_shop;
+CREATE TABLE orders (
+order_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+total_price FLOAT(5,2) NOT NULL,
+order_date DATE,
+customer_id MEDIUMINT REFERENCES customer(customer_id),
+first_name VARCHAR(40) REFERENCES customer(first_name),
+last_name VARCHAR(40) REFERENCES customer(last_name),
+PRIMARY KEY(order_id)	);
+
+use e_shop;
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,567.17,CURRENT_DATE,1);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,234.26,CURRENT_DATE,3);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,834.36,CURRENT_DATE,5);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,67.38,CURRENT_DATE,1);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,2.3,CURRENT_DATE,4);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,1456.23,CURRENT_DATE,8);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,2323.83,CURRENT_DATE,5);
+INSERT INTO e_shop.orders (order_id, total_price, order_date, customer_id	)VALUES (NULL,738.43,CURRENT_DATE,9);
+
+---------------------------------------------------------------------------------------------------------------------
+
+UPDATE e_shop.orders
+SET first_name=(SELECT first_name FROM customer WHERE orders.customer_id= customer.customer_id) ;
+
+UPDATE e_shop.orders
+SET last_name=(SELECT last_name FROM customer WHERE orders.customer_id= customer.customer_id) ;
