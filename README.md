@@ -1,3 +1,9 @@
+![MIT License](https://img.shields.io/badge/license-MIT-green)
+![Made with SQL](https://img.shields.io/badge/Made%20with-SQL-blue)
+![JOIN Queries](https://img.shields.io/badge/SQL-JOIN_Operations-important)
+![UPDATE Logic](https://img.shields.io/badge/Update_Between_Tables-Supported-yellow)
+![Database Project](https://img.shields.io/badge/Database-Academic_Project-lightgrey)
+
 # SQL Data Sync & Join Operations – Update Between Tables
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
